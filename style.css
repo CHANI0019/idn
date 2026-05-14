@@ -99,6 +99,20 @@ nav {
     font-size: 1.8rem;
     font-weight: 700;
     color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.logo::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-image: url('image/National_emblem_of_Indonesia.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: brightness(0) invert(1);
 }
 
 .nav-links {
@@ -143,6 +157,24 @@ nav {
     position: relative;
     z-index: 2;
     max-width: 800px;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 500px;
+    height: 500px;
+    background-image: url('image/National_emblem_of_Indonesia.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.1;
+    z-index: 1;
+    filter: brightness(0) invert(1);
+    pointer-events: none;
 }
 
 .hero p {
@@ -372,9 +404,29 @@ footer {
     line-height: 1.8;
     color: #334155;
     background: white;
-    padding: 3rem;
+    padding: 4rem;
     border-radius: 12px;
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.markdown-content::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 70%;
+    background-image: url('image/National_emblem_of_Indonesia.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.04;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .markdown-content h1 { 
