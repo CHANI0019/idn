@@ -320,11 +320,12 @@ footer {
 
 .modal-content {
     background-color: var(--bg-card);
-    margin: 5% auto;
+    margin: 2vh auto;
     padding: 0;
-    width: 80%;
-    max-width: 900px;
-    max-height: 80vh;
+    width: 95%;
+    max-width: 1200px;
+    height: 95vh;
+    max-height: 95vh;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
