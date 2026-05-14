@@ -51,4 +51,52 @@ document.addEventListener('DOMContentLoaded', () => {
             header.style.boxShadow = 'none';
         }
     });
+
+    // Modal Logic
+    const modal = document.getElementById('docModal');
+    const modalBody = document.getElementById('modalBody');
+    const modalTitle = document.getElementById('modalTitle');
+    const closeBtn = document.querySelector('.close-modal');
+    const viewButtons = document.querySelectorAll('.doc-item .btn');
+
+    viewButtons.forEach(button => {
+        button.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const filePath = button.getAttribute('href');
+            const docTitle = button.parentElement.querySelector('span').innerText;
+
+            modalTitle.innerText = docTitle;
+            modalBody.innerHTML = '<p>Loading document...</p>';
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scroll
+
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) throw new Error('Failed to load document');
+                const markdown = await response.text();
+                
+                // Use marked.js to render markdown (if loaded)
+                if (window.marked) {
+                    modalBody.innerHTML = marked.parse(markdown);
+                } else {
+                    modalBody.innerHTML = `<pre style="white-space: pre-wrap;">${markdown}</pre>`;
+                }
+            } catch (error) {
+                modalBody.innerHTML = `<p style="color: #ef4444;">Error: ${error.message}</p>`;
+            }
+        });
+    });
+
+    // Close modal
+    closeBtn.onclick = () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    };
+
+    window.onclick = (event) => {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    };
 });

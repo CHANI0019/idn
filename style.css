@@ -304,3 +304,152 @@ footer {
     h1 { font-size: 2.5rem; }
     .nav-links { display: none; }
 }
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    background-color: var(--bg-card);
+    margin: 5% auto;
+    padding: 0;
+    width: 80%;
+    max-width: 900px;
+    max-height: 80vh;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    padding: 1.5rem 2.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+.close-modal {
+    color: var(--text-gray);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: white;
+}
+
+.modal-body {
+    padding: 2.5rem;
+    overflow-y: auto;
+    color: var(--text-white);
+}
+
+/* Markdown Content Styling */
+.markdown-content {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.8;
+    color: #334155;
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.markdown-content h1 { 
+    font-size: 2.2rem; 
+    font-weight: 800;
+    margin: 0 0 2rem; 
+    color: #1e293b;
+    border-left: 6px solid var(--primary);
+    padding-left: 1rem;
+}
+
+.markdown-content h2 { 
+    font-size: 1.6rem; 
+    font-weight: 700;
+    margin: 2.5rem 0 1.2rem; 
+    color: #1e293b;
+    border-bottom: 2px solid #f1f5f9; 
+    padding-bottom: 0.5rem; 
+}
+
+.markdown-content h3 { 
+    font-size: 1.3rem; 
+    font-weight: 600;
+    margin: 1.8rem 0 0.8rem; 
+    color: #334155;
+}
+
+.markdown-content p { 
+    margin-bottom: 1.2rem; 
+    color: #475569; 
+    text-align: justify;
+}
+
+.markdown-content ul, .markdown-content ol { 
+    margin: 0 0 1.5rem 1.5rem; 
+}
+
+.markdown-content li { 
+    margin-bottom: 0.6rem; 
+    color: #475569;
+}
+
+.markdown-content blockquote {
+    border-left: 4px solid #e2e8f0;
+    padding-left: 1.5rem;
+    font-style: italic;
+    color: #64748b;
+    margin: 2rem 0;
+}
+
+.markdown-content hr { 
+    border: none; 
+    border-top: 2px dashed #f1f5f9; 
+    margin: 3rem 0; 
+}
+
+.markdown-content code { 
+    background: #f1f5f9; 
+    color: #475569;
+    padding: 0.2rem 0.4rem; 
+    border-radius: 4px; 
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9em;
+}
+
+.markdown-content pre {
+    background: #1e293b;
+    color: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+.markdown-content pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+}
