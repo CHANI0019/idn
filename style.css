@@ -396,6 +396,22 @@ footer {
     padding: 2.5rem;
     overflow-y: auto;
     color: var(--text-white);
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
+}
+
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
 }
 
 /* Markdown Content Styling */
@@ -409,7 +425,6 @@ footer {
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
     position: relative;
     z-index: 1;
-    overflow: hidden;
 }
 
 .markdown-content::before {
