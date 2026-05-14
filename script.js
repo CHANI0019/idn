@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 const response = await fetch(filePath);
-                if (!response.ok) throw new Error('Failed to load document');
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const markdown = await response.text();
                 
                 // Use marked.js to render markdown (if loaded)
@@ -82,7 +82,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     modalBody.innerHTML = `<pre style="white-space: pre-wrap;">${markdown}</pre>`;
                 }
             } catch (error) {
-                modalBody.innerHTML = `<p style="color: #ef4444;">Error: ${error.message}</p>`;
+                console.error('Document load error:', error);
+                let errorMsg = `<p style="color: #ef4444; font-weight: bold;">Error: ${error.message}</p>`;
+                
+                if (window.location.protocol === 'file:') {
+                    errorMsg += `
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: #fef2f2; border-radius: 8px; color: #991b1b; font-size: 0.95rem; border: 1px solid #fee2e2;">
+                        <p><strong>💡 로컬 파일 보안 이슈 안내 (CORS)</strong></p>
+                        <p style="margin-top: 0.5rem;">브라우저 보안 정책상 <code>file://</code> 프로토콜에서는 직접적인 문서 읽기가 제한될 수 있습니다.</p>
+                        <ul style="margin-top: 1rem; list-style-position: inside;">
+                            <li>VS Code의 <b>Live Server</b> 확장 프로그램을 사용해 실행하세요.</li>
+                            <li>또는 터미널에서 <code>npx serve</code> 명령어로 로컬 서버를 구동하세요.</li>
+                            <li>(Edge/Chrome 사용 시) <code>--allow-file-access-from-files</code> 옵션으로 브라우저를 실행해야 합니다.</li>
+                        </ul>
+                    </div>`;
+                }
+                modalBody.innerHTML = errorMsg;
             }
         });
     });
